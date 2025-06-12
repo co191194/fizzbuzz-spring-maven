@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Fizz Buzz</title>
+</head>
+<body>
+	<h1>Fizz Buzz</h1>
+	<!-- フォーム -->
+	<form action="#" method="post" th:action="@{/fizzbuzz/result}" th:object="${fizzBuzzForm}">
+		<label for="number">数値</label>
+		<input type="number" th:field="*{number}" />
+		<button>送信</button>
+		<p th:if="${#fields.hasErrors('number')}" th:errors="*{number}"></p>
+	</form>
+	
+	<!-- 結果を表示する場所 -->
+	<div id="result">
+		<h2>結果</h2>
+		<div id="list">
+			<div th:each="item : ${result}">
+				<span th:text="${item}">item</span>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
